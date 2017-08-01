@@ -15,12 +15,12 @@ public class FormularioIsis extends javax.swing.JFrame {
         mostrarAviones();
         mostrarVuelos();
         mostrarPasajeros();
+        
         mostrarAvion();
         mostrarClase();
         mostrarVuelo();
+        mostrarFecha();
     }
-    
-    
     
     //Métodos para mostrar datos de todas las tablas y combobox
     public void mostrarAviones(){
@@ -125,6 +125,8 @@ public class FormularioIsis extends javax.swing.JFrame {
         }
     }
     
+    
+    
     public void mostrarAvion(){
         try{
             //Eliminamos todos los Items del ComboBox
@@ -133,9 +135,16 @@ public class FormularioIsis extends javax.swing.JFrame {
             //Obtenemos todos los aviones con sus datos y los guardamos en el array aviones
             Aviones = DAOAvion.obtenerTodo();
             
-            for(Avion avion:Aviones){
-                //Agregamos el numero del almacen al ComboBox
-                comboBoxVueloAvion.addItem(avion.getIdAvion());
+            if(Aviones.isEmpty()){
+                comboBoxVueloAvion.enable(false);
+                comboBoxVueloAvion.addItem("No hay aviones");
+            } else{
+                comboBoxVueloAvion.enable(true);
+                comboBoxVueloAvion.addItem("Seleccione");
+                for(Avion avion:Aviones){
+                    //Agregamos el numero del almacen al ComboBox
+                    comboBoxVueloAvion.addItem(avion.getIdAvion());
+                }
             }
         } catch (Exception e){
             JOptionPane.showMessageDialog(null,"Error: " + e.getMessage() + "\nCausa: " + e.getCause());
@@ -143,11 +152,7 @@ public class FormularioIsis extends javax.swing.JFrame {
     }
     
     public void mostrarClase(){
-        comboBoxPasajerosClase.removeAllItems();
-        
-        comboBoxPasajerosClase.addItem("Turista");
-        comboBoxPasajerosClase.addItem("Primera");
-        comboBoxPasajerosClase.addItem("Business");
+        comboBoxPasajerosClase.setSelectedIndex(0);
     }
     
     public void mostrarVuelo(){
@@ -158,13 +163,27 @@ public class FormularioIsis extends javax.swing.JFrame {
             //Obtenemos todos los vuelos con sus datos y los guardamos en el array vuelos
             Vuelos = DAOVuelo.obtenerTodo();
             
-            for(Vuelo vuelo:Vuelos){
-                //Agregamos el numero del vendedor al ComboBox
-                comboBoxPasajerosVuelo.addItem(String.valueOf(vuelo.getId()));
+            if(Vuelos.isEmpty()){
+                comboBoxPasajerosVuelo.enable(false);
+                comboBoxPasajerosVuelo.addItem("No hay vuelos");
+            } else{
+                comboBoxPasajerosVuelo.enable();
+                comboBoxPasajerosVuelo.addItem("Seleccione");
+            
+                for(Vuelo vuelo:Vuelos){
+                    //Agregamos el numero del vendedor al ComboBox
+                    comboBoxPasajerosVuelo.addItem(String.valueOf(vuelo.getId()));
+                }
             }
         } catch (Exception e){
             JOptionPane.showMessageDialog(null,"Error: " + e.getMessage() + "\nCausa: " + e.getCause());
         }
+    }
+    
+    public void mostrarFecha(){
+        comboBoxVueloDia.setSelectedIndex(0);
+        comboBoxVueloMes.setSelectedIndex(0);
+        comboBoxVueloAnio.setSelectedIndex(0);
     }
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -204,12 +223,14 @@ public class FormularioIsis extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txtVueloId = new javax.swing.JTextField();
-        txtVueloFecha = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         txtVueloOrigen = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         txtVueloDestino = new javax.swing.JTextField();
         comboBoxVueloAvion = new javax.swing.JComboBox<>();
+        comboBoxVueloDia = new javax.swing.JComboBox<>();
+        comboBoxVueloMes = new javax.swing.JComboBox<>();
+        comboBoxVueloAnio = new javax.swing.JComboBox<>();
         pnlVuelosBuscarTodos = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblVueloBuscarTodos = new javax.swing.JTable();
@@ -475,6 +496,12 @@ public class FormularioIsis extends javax.swing.JFrame {
             }
         });
 
+        comboBoxVueloDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dd", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" }));
+
+        comboBoxVueloMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mm", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+
+        comboBoxVueloAnio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "aaaa", "2017" }));
+
         javax.swing.GroupLayout pnlVuelosGuardarLayout = new javax.swing.GroupLayout(pnlVuelosGuardar);
         pnlVuelosGuardar.setLayout(pnlVuelosGuardarLayout);
         pnlVuelosGuardarLayout.setHorizontalGroup(
@@ -495,12 +522,17 @@ public class FormularioIsis extends javax.swing.JFrame {
                             .addComponent(jLabel12)
                             .addComponent(jLabel14))
                         .addGap(18, 18, 18)
-                        .addGroup(pnlVuelosGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtVueloDestino, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                            .addComponent(txtVueloOrigen, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtVueloFecha, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtVueloId, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboBoxVueloAvion, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(pnlVuelosGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtVueloDestino)
+                            .addComponent(txtVueloOrigen)
+                            .addComponent(txtVueloId)
+                            .addComponent(comboBoxVueloAvion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlVuelosGuardarLayout.createSequentialGroup()
+                                .addComponent(comboBoxVueloDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboBoxVueloMes, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboBoxVueloAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(145, Short.MAX_VALUE))
         );
         pnlVuelosGuardarLayout.setVerticalGroup(
@@ -513,7 +545,9 @@ public class FormularioIsis extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlVuelosGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtVueloFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBoxVueloAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxVueloMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxVueloDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlVuelosGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -665,7 +699,7 @@ public class FormularioIsis extends javax.swing.JFrame {
 
         jLabel19.setText("Clase:");
 
-        comboBoxPasajerosClase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxPasajerosClase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Turista", "Primera", "Business" }));
 
         comboBoxPasajerosVuelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -879,32 +913,36 @@ public class FormularioIsis extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPasajeroCancelarActionPerformed
 
     private void btnPasajeroAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasajeroAceptarActionPerformed
+        String clase = comboBoxPasajerosClase.getSelectedItem().toString();
+        String vuelo = comboBoxPasajerosVuelo.getSelectedItem().toString();
         
-        try {
-            //Recuperamos los valores de los textFields y los guardamos en las variables correspondientes
-            String id = txtPasajeroId.getText();
-            String nombre = txtPasajeroNombre.getText();
-            String asiento = txtPasajeroAsiento.getText();
-            String clase = comboBoxPasajerosClase.getSelectedItem().toString();
-            String vuelo = comboBoxPasajerosVuelo.getSelectedItem().toString();
+        if(clase == "Seleccione" || vuelo == "Seleccione" || vuelo == "No hay vuelos"){
+            JOptionPane.showMessageDialog(null, "Datos inválidos");
+        } else{
+            try {
+                //Recuperamos los valores de los textFields y los guardamos en las variables correspondientes
+                String id = txtPasajeroId.getText();
+                String nombre = txtPasajeroNombre.getText();
+                String asiento = txtPasajeroAsiento.getText();
 
-            //Creamos nuevo objeto de pasajero con parametros
-            Pasajero pasajero = new Pasajero(id, nombre, asiento, clase, vuelo);
+                //Creamos nuevo objeto de pasajero con parametros
+                Pasajero pasajero = new Pasajero(id, nombre, asiento, clase, vuelo);
 
-            //Invocamos el método estático guardar y le pasamos el objeto pasajero
-            DAOPasajero.guardar(pasajero);
+                //Invocamos el método estático guardar y le pasamos el objeto pasajero
+                DAOPasajero.guardar(pasajero);
 
-            //Ejecutamos el método para mostrar datos en la tabla y el combobox
-            mostrarPasajeros();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-        } finally{
-            //Limpiamos los textField para el nuevo ingreso de datos
-            txtPasajeroId.setText("");
-            txtPasajeroNombre.setText("");
-            txtPasajeroAsiento.setText("");
-            mostrarVuelo();
-            mostrarClase();
+                //Ejecutamos el método para mostrar datos en la tabla y el combobox
+                mostrarPasajeros();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+            } finally{
+                //Limpiamos los textField para el nuevo ingreso de datos
+                txtPasajeroId.setText("");
+                txtPasajeroNombre.setText("");
+                txtPasajeroAsiento.setText("");
+                mostrarVuelo();
+                mostrarClase();
+            }
         }
     }//GEN-LAST:event_btnPasajeroAceptarActionPerformed
 
@@ -970,40 +1008,46 @@ public class FormularioIsis extends javax.swing.JFrame {
     private void btnVueloancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVueloancelarActionPerformed
         //Limpiamos los textField para el nuevo ingreso de datos
         txtVueloId.setText("");
-        txtVueloFecha.setText("");
         txtVueloOrigen.setText("");
         txtVueloDestino.setText("");
         mostrarAvion();
+        mostrarFecha();
     }//GEN-LAST:event_btnVueloancelarActionPerformed
 
     private void btnVueloAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVueloAceptarActionPerformed
+        String dia = comboBoxVueloDia.getSelectedItem().toString();
+        String mes = comboBoxVueloMes.getSelectedItem().toString();
+        String anio = comboBoxVueloAnio.getSelectedItem().toString();
+        String avion = comboBoxVueloAvion.getSelectedItem().toString();
         
-        try{
-            //Recuperamos los valores de los textFields y los guardamos en las variables correspondientes
-            String id = txtVueloId.getText();
-            String fecha = txtVueloFecha.getText();
-            String origen = txtVueloOrigen.getText();
-            String destino = txtVueloDestino.getText();
-            String avion = comboBoxVueloAvion.getSelectedItem().toString();
-            
-            //Creamos nuevo objeto de vuelo con parametros
-            Vuelo vuelo = new Vuelo(id, fecha, origen, destino, avion);
+        if(dia == "dd" || mes == "mm" || anio == "aaaa" || avion == "Seleccione" || avion == "No hay aviones"){
+            JOptionPane.showMessageDialog(null, "Datos inválidos");
+        } else{
+            try{
+                //Recuperamos los valores de los textFields y los guardamos en las variables correspondientes
+                String id = txtVueloId.getText();
+                String origen = txtVueloOrigen.getText();
+                String destino = txtVueloDestino.getText();
 
-            //Invocamos el método estático guardar y le pasamos el objeto vendedor
-            DAOVuelo.guardar(vuelo);
+                //Creamos nuevo objeto de vuelo con parametros
+                Vuelo vuelo = new Vuelo(id, dia + "/" + mes + "/" +anio, origen, destino, avion);
 
-            //Ejecutamos el método para mostrar datos en la tabla y el combobox
-            mostrarVuelos();
-        } catch (Exception e){
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-        } finally{
-            //Limpiamos los textField para el nuevo ingreso de datos
-            txtVueloId.setText("");
-            txtVueloFecha.setText("");
-            txtVueloOrigen.setText("");
-            txtVueloDestino.setText("");
-            mostrarAvion();
-            mostrarVuelo();
+                //Invocamos el método estático guardar y le pasamos el objeto vendedor
+                DAOVuelo.guardar(vuelo);
+
+                //Ejecutamos el método para mostrar datos en la tabla y el combobox
+                mostrarVuelos();
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+            } finally{
+                //Limpiamos los textField para el nuevo ingreso de datos
+                txtVueloId.setText("");
+                txtVueloOrigen.setText("");
+                txtVueloDestino.setText("");
+                mostrarAvion();
+                mostrarVuelo();
+                mostrarFecha();
+            }
         }
     }//GEN-LAST:event_btnVueloAceptarActionPerformed
 
@@ -1025,8 +1069,11 @@ public class FormularioIsis extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxPasajeroBuscarId;
     private javax.swing.JComboBox<String> comboBoxPasajerosClase;
     private javax.swing.JComboBox<String> comboBoxPasajerosVuelo;
+    private javax.swing.JComboBox<String> comboBoxVueloAnio;
     private javax.swing.JComboBox<String> comboBoxVueloAvion;
     private javax.swing.JComboBox<String> comboBoxVueloBuscarId;
+    private javax.swing.JComboBox<String> comboBoxVueloDia;
+    private javax.swing.JComboBox<String> comboBoxVueloMes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1083,7 +1130,6 @@ public class FormularioIsis extends javax.swing.JFrame {
     private javax.swing.JTextField txtPasajeroId;
     private javax.swing.JTextField txtPasajeroNombre;
     private javax.swing.JTextField txtVueloDestino;
-    private javax.swing.JTextField txtVueloFecha;
     private javax.swing.JTextField txtVueloId;
     private javax.swing.JTextField txtVueloOrigen;
     // End of variables declaration//GEN-END:variables

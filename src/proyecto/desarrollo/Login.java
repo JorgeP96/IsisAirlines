@@ -104,17 +104,28 @@ public class Login extends javax.swing.JFrame {
         String nombre = txtUsuario.getText();
         String contraseña = txtContraseña.getText();
         
-        Usuario usuario = new Usuario(nombre, contraseña);
-        if(DAOUsuario.validarUsuario(usuario) == 0){
-            JOptionPane.showMessageDialog(null, "Usuario no registrado");
-        } else if(DAOUsuario.validarUsuario(usuario) == 1){
-            JOptionPane.showMessageDialog(null, "Usuario y/o contraseña incorrectos");
-            txtUsuario.setText("");
-            txtContraseña.setText("");
+        if(nombre.length() != 0 && contraseña.length() != 0){
+            Usuario usuario = new Usuario(nombre, contraseña);
+            
+            switch (DAOUsuario.validarUsuario(usuario)){
+                case 0:
+                    JOptionPane.showMessageDialog(null, "Usuario no registrado");
+                    break;
+                    
+                case 1:
+                    JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+                    txtUsuario.setText("");
+                    txtContraseña.setText("");
+                    break;
+                    
+                case 2:
+                    FormularioIsis ap = new FormularioIsis();
+                    ap.show();
+                    this.hide();
+                    break;
+            }
         } else{
-            FormularioIsis ap = new FormularioIsis();
-            ap.show();
-            this.hide();
+            JOptionPane.showMessageDialog(null, "Datos inválidos");   
         }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 

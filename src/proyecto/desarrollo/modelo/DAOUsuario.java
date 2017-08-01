@@ -15,7 +15,7 @@ public class DAOUsuario {
             con = Conexion.conectarse();
 
             cons = con.createStatement();
-            res = cons.executeQuery("SELECT * FROM usuario");
+            res = cons.executeQuery("SELECT * FROM usuario WHERE id_user = '" + usuario.getUsuario() + "'");
             
             
             String user = usuario.getUsuario();
@@ -32,7 +32,7 @@ public class DAOUsuario {
                     } else
                         valido = 1;
                 }
-            }  
+            }
                 
         } catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
