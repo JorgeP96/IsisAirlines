@@ -15,7 +15,7 @@ public class DAOUsuario {
             con = Conexion.conectarse();
 
             cons = con.createStatement();
-            res = cons.executeQuery("SELECT * FROM usuario WHERE id_user = '" + usuario.getUsuario() + "'");
+            res = cons.executeQuery("SELECT * FROM usuario");
             
             
             String user = usuario.getUsuario();

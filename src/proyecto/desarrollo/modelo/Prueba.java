@@ -1,57 +1,108 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyecto.desarrollo.modelo;
 
-/**
- *
- * @author Jorge
- */
+import java.sql.*;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
+
 public class Prueba {
     public static void main(String[] args) {
         
-        //Vamos a probar nuestro DAOAlmacen
-        
-        /*Almacen a1 = new Almacen(6,"Unitec");
-        DAOAlmacen dao = new DAOAlmacen();
-        try{
-            dao.guardar(a1);
-            System.out.println("Se guardo bien en el almacen");
+        //Prueba de unidad para guardar aviones
+        /*try{
+            Avion avion = new Avion("1A", "Aeromexico", "Jet", 25, 5);
+            DAOAvion.guardar(avion);
+            System.out.println("Guardado correcto de avión");
         } catch (Exception e){
             System.out.println("Error: " + e.getMessage());
         }*/
         
-        //Vamos a probar nuestro DAOVendedor
-        /*Vendedor v1 = new Vendedor(123, "Jorge", "Ecatepec");
-        DAOVendedor dao = new DAOVendedor();
-        try{
-            dao.guardar(v1);
-            System.out.println("Se guardo bien el vendedor");
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        }*/
-        
-        //Vamos a probar nuestro DAOCliente
-        /*Cliente c1 = new Cliente(159, 4, "Prueba");
-        DAOCliente dao = new DAOCliente();
-        
-        try{
-            dao.guardar(c1);
-            System.out.println("Se guardo bien el cliente");
+        //Prueba de unidad para mostrar todos los aviones
+        /*try{
+            ArrayList<Avion> aviones;
+            aviones = DAOAvion.obtenerTodo();
+            String mostrar = "";
+            
+            for(Avion avion:aviones){
+                mostrar += "Avion: " + avion.getIdAvion() + " " +
+                          "Fabricante: " + avion.getFabricante() + " " +
+                          "Modelo: " + avion.getModelo() + " " +
+                          "Capacidad: " + avion.getCapacidad() + " " +
+                          "Autonomía: " + avion.getAutonomia() + "\n";
+            }
+            
+            System.out.println(mostrar);
         } catch (Exception e){
             System.out.println("Error: " + e.getMessage());
         }*/
         
-        //Vamos a probar nuestro DAOVentas
-        /*Ventas v1 = new Ventas(159, 123, 1561);
-        DAOVentas dao = new DAOVentas();
         
-        try{
-            dao.guardar(v1);
-            System.out.println("Se guardo bien la venta");
-        } catch(Exception e){
+        
+        
+        
+        
+        
+        
+        
+        //Prueba de unidad para guardar vuelo
+        /*try{
+            Vuelo vuelo = new Vuelo("3", "10/09/2017", "Mexico", "Mty", "1A");
+            DAOVuelo.guardar(vuelo);
+            System.out.println("Guardado correcto de vuelo");
+        } catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }*/
+        
+        //Prueba de unidad para mostrar todos los vuelos
+        /*try{
+            ArrayList<Vuelo> vuelos;
+            vuelos = DAOVuelo.obtenerTodo();
+            String mostrar = "";
+            
+            for(Vuelo vuelo:vuelos){
+                mostrar += "Id: " + vuelo.getId()+ " " +
+                          "Fecha: " + vuelo.getFecha()+ " " +
+                          "Origen: " + vuelo.getOrigen()+ " " +
+                          "Destino: " + vuelo.getDestino()+ " " +
+                          "Avión: " + vuelo.getAvion()+ "\n";
+            }
+            
+            System.out.println(mostrar);
+        } catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }*/
+        
+        
+        
+        
+        
+        
+        
+        
+        //Prueba de unidad para guardar pasajero
+        /*try{
+            Pasajero pasajero = new Pasajero("1", "Roko", "2A", "Business", "2");
+            DAOPasajero.guardar(pasajero);
+            System.out.println("Guardado correcto de pasajero");
+        } catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }*/
+        
+        //Prueba de unidad para mostrar todos los pasajeros
+        /*try{
+            ArrayList<Pasajero> pasajeros;
+            pasajeros = DAOPasajero.obtenerTodo();
+            String mostrar = "";
+            
+            for(Pasajero pasajero:pasajeros){
+                mostrar += "Id: " + pasajero.getId()+ " " +
+                          "Nombre: " + pasajero.getNombre()+ " " +
+                          "Asiento: " + pasajero.getAsiento()+ " " +
+                          "Clase: " + pasajero.getClase()+ " " +
+                          "Vuelo: " + pasajero.getVuelo()+ "\n";
+            }
+            
+            System.out.println(mostrar);
+        } catch (Exception e){
             System.out.println("Error: " + e.getMessage());
         }*/
     }

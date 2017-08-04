@@ -323,7 +323,7 @@ public class FormularioIsis extends javax.swing.JFrame {
                         .addComponent(btnAvionAceptar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAvionCancelar)))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         pnlAvionesGuardarLayout.setVerticalGroup(
             pnlAvionesGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,7 +381,7 @@ public class FormularioIsis extends javax.swing.JFrame {
         pnlAvionesBuscarTodos.setLayout(pnlAvionesBuscarTodosLayout);
         pnlAvionesBuscarTodosLayout.setHorizontalGroup(
             pnlAvionesBuscarTodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
         );
         pnlAvionesBuscarTodosLayout.setVerticalGroup(
             pnlAvionesBuscarTodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -431,7 +431,7 @@ public class FormularioIsis extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAvionesBuscarIDLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlAvionesBuscarIDLayout.setVerticalGroup(
@@ -510,30 +510,31 @@ public class FormularioIsis extends javax.swing.JFrame {
                 .addGap(126, 126, 126)
                 .addGroup(pnlVuelosGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlVuelosGuardarLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(btnVueloAceptar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnVueloancelar))
-                    .addGroup(pnlVuelosGuardarLayout.createSequentialGroup()
                         .addGroup(pnlVuelosGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel13)
                             .addComponent(jLabel15)
                             .addComponent(jLabel16)
                             .addComponent(jLabel12)
                             .addComponent(jLabel14))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlVuelosGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtVueloDestino)
-                            .addComponent(txtVueloOrigen)
-                            .addComponent(txtVueloId)
-                            .addComponent(comboBoxVueloAvion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlVuelosGuardarLayout.createSequentialGroup()
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(pnlVuelosGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(comboBoxVueloAvion, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtVueloDestino, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtVueloOrigen, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlVuelosGuardarLayout.createSequentialGroup()
                                 .addComponent(comboBoxVueloDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboBoxVueloMes, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboBoxVueloMes, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboBoxVueloAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(145, Short.MAX_VALUE))
+                                .addComponent(comboBoxVueloAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtVueloId))
+                        .addGap(149, 149, 149))
+                    .addGroup(pnlVuelosGuardarLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(btnVueloAceptar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnVueloancelar)
+                        .addGap(137, 137, 137))))
         );
         pnlVuelosGuardarLayout.setVerticalGroup(
             pnlVuelosGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -591,7 +592,7 @@ public class FormularioIsis extends javax.swing.JFrame {
         pnlVuelosBuscarTodos.setLayout(pnlVuelosBuscarTodosLayout);
         pnlVuelosBuscarTodosLayout.setHorizontalGroup(
             pnlVuelosBuscarTodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
         );
         pnlVuelosBuscarTodosLayout.setVerticalGroup(
             pnlVuelosBuscarTodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -641,7 +642,7 @@ public class FormularioIsis extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnlVuelosBuscarIDLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlVuelosBuscarIDLayout.setVerticalGroup(
@@ -662,7 +663,7 @@ public class FormularioIsis extends javax.swing.JFrame {
         pnlVuelos.setLayout(pnlVuelosLayout);
         pnlVuelosLayout.setHorizontalGroup(
             pnlVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane3)
+            .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 571, Short.MAX_VALUE)
         );
         pnlVuelosLayout.setVerticalGroup(
             pnlVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -729,7 +730,7 @@ public class FormularioIsis extends javax.swing.JFrame {
                             .addComponent(txtPasajeroId, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(comboBoxPasajerosClase, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(comboBoxPasajerosVuelo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
         pnlPasajerosGuardarLayout.setVerticalGroup(
             pnlPasajerosGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -837,7 +838,7 @@ public class FormularioIsis extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnlPasajerosBuscarIDLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlPasajerosBuscarIDLayout.setVerticalGroup(
